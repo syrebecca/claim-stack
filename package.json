@@ -1,0 +1,13 @@
+{
+  "name": "claim-stack",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/scene.js --bundle --minify --format=iife --global-name=ClaimStack3D --outfile=docs/scene-webgl.js"
+  },
+  "dependencies": {
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

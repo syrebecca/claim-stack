@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070d12">
+  <meta name="description" content="공개특허 제10-2024-0040371호의 반도체 소자를 3D로 분해하고 청구항의 문장을 구조와 연결합니다.">
+  <title>CLAIM STACK — 반도체 소자 3D 분해도</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./claims.js"></script>
+  <script defer src="./scene-webgl.js"></script>
+  <script defer src="./scene.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#claims">청구항으로 이동</a>
+  <header class="masthead">
+    <a class="wordmark" href="#top" aria-label="Claim Stack 처음으로"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>CLAIM<span>STACK</span></a>
+    <nav aria-label="주 메뉴"><a href="#top">3D 분해도</a><a href="#claims" id="claim-nav">청구항</a><a href="#sources">공보 도면</a></nav>
+    <a class="patent-link" href="./assets/KR20240040371A.pdf" target="_blank" rel="noopener"><span>KR 10-2024-0040371</span><span class="file-icon" aria-hidden="true">▤</span></a>
+  </header>
+
+  <main id="top">
+    <div class="sequence" id="sequence">
+      <section class="studio" aria-label="3D 분해도와 청구항">
+        <div class="visual-column">
+          <div class="stage" id="scene-stage">
+            <div class="stage-heading">
+              <div class="stage-meta"><span class="signal" aria-hidden="true"></span><span>GAA TRANSISTOR</span><span>·</span><span id="scene-figure">도 2a</span></div>
+              <h1>반도체 소자<br><em>3D 분해도</em></h1>
+            </div>
+            <canvas aria-label="반도체 소자를 조립하거나 분해할 수 있는 3D 모델" role="img"></canvas>
+            <div class="model-tooltip" hidden></div>
+            <span class="scene-marker" hidden></span>
+            <div class="stage-chapter">
+              <p class="chapter-step" id="chapter-step">01 / 06</p>
+              <p class="chapter-title" id="chapter-title">조립된 소자</p>
+              <p class="chapter-text" id="chapter-text">스크롤하거나 재생을 눌러 소자 내부를 살펴보세요.</p>
+            </div>
+            <p class="rotate-hint">드래그하여 회전</p>
+            <div class="stage-controls" aria-label="3D 시점 조절">
+              <button type="button" id="toggle-section" class="section-switch" aria-pressed="false" aria-label="도 2a의 I–I′ 절단면 보기" title="도 2a의 I–I′ 절단면 보기">I–I′ 단면</button>
+              <button type="button" data-action="left" aria-label="왼쪽으로 회전" title="왼쪽으로 회전">↶</button>
+              <button type="button" data-action="right" aria-label="오른쪽으로 회전" title="오른쪽으로 회전">↷</button>
+              <button type="button" data-action="reset" aria-label="기본 시점" title="기본 시점">⌂</button>
+            </div>
+          </div>
+          <div class="timeline">
+            <button class="play" id="play" type="button" aria-label="분해 애니메이션 재생"><span class="play-icon" aria-hidden="true"></span><span id="play-text">재생</span></button>
+            <div class="timeline-main">
+              <div class="timeline-label"><label for="scene-range">분해율</label><output id="scene-progress" for="scene-range">0%</output></div>
+              <input id="scene-range" type="range" min="0" max="100" value="0" aria-label="3D 분해율">
+              <div class="steps" aria-label="분해 단계">
+                <button type="button" data-chapter="0" aria-current="step">조립</button>
+                <button type="button" data-chapter="1">기판</button>
+                <button type="button" data-chapter="2">채널층</button>
+                <button type="button" data-chapter="3">게이트</button>
+                <button type="button" data-chapter="4">소스·드레인</button>
+                <button type="button" data-chapter="5">완전 분해</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="claims" id="claims" aria-labelledby="claims-title" tabindex="-1">
+          <div class="claim-head">
+            <div><p class="kicker">CLAIM MAPPING</p><h2 id="claims-title">청구항</h2></div>
+            <label class="select-wrap"><span class="sr-only">청구항 선택</span><select id="claim-select" aria-label="청구항 선택"></select></label>
+          </div>
+          <div class="claim-content" id="claim-content">
+            <p class="claim-info"><span id="claim-type"></span><span id="claim-summary"></span></p>
+            <p class="claim-note" id="claim-note" hidden></p>
+            <div id="elements" class="elements"></div>
+            <details class="claim-text"><summary>청구항 전문</summary><p id="full-claim"></p></details>
+          </div>
+          <div class="claim-footer">
+            <span id="part-readout" aria-live="polite">구성요소를 눌러 위치 확인</span>
+            <button class="text-button" id="related-drawing" data-drawing="2a" type="button"><span aria-hidden="true">▧</span> <span id="related-label">도 2a 원본</span></button>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <section class="sources" id="sources" aria-labelledby="sources-title">
+      <div class="sources-info">
+        <p class="kicker">SOURCE DRAWINGS</p>
+        <h2 id="sources-title">공개공보 도면</h2>
+        <p>도 1의 평면 배치와 도 2a의 I–I′, II–II′, III–III′ 단면을 대조해 두 게이트와 인접한 소스·드레인 영역을 재구성했습니다. 공보에 치수가 표시되지 않아 도면 비율을 기준으로 모델링했으며, 색상과 분해 간격은 구조를 읽기 쉽게 정했습니다.</p>
+        <a class="text-button pdf-button" href="./assets/KR20240040371A.pdf" target="_blank" rel="noopener"><span aria-hidden="true">▤</span> 공개공보 PDF</a>
+      </div>
+      <div class="drawings">
+        <button class="drawing-card" type="button" data-drawing="1"><img src="./assets/fig-1.png" alt="활성 영역과 게이트가 교차하는 평면도" loading="lazy"><span><b>도 1</b> 평면 배치</span></button>
+        <button class="drawing-card" type="button" data-drawing="2a"><img src="./assets/fig-2a.png" alt="채널층과 게이트의 세 단면" loading="lazy"><span><b>도 2a</b> 기본 단면</span></button>
+        <button class="drawing-card" type="button" data-drawing="2b"><img src="./assets/fig-2b.png" alt="내부 스페이서의 위치가 표시된 단면" loading="lazy"><span><b>도 2b</b> 내부 스페이서</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>CLAIM STACK</span><span>삼성전자 · 공개특허 제10-2024-0040371호 · 2024.03.28</span><a href="#top">맨 위로</a></footer>
+  <dialog class="drawing-dialog" id="drawing-dialog" aria-labelledby="drawing-title">
+    <div class="dialog-head"><div><p class="kicker">KR 10-2024-0040371</p><h2 id="drawing-title">공개공보 도면</h2></div><button id="close-drawing" type="button" aria-label="도면 닫기">×</button></div>
+    <div class="drawing-frame"><img id="drawing-image" alt=""></div>
+    <div class="dialog-footer"><span id="drawing-page"></span><a href="./assets/KR20240040371A.pdf" id="drawing-pdf" target="_blank" rel="noopener">공개공보 PDF</a></div>
+  </dialog>
+</body>
+</html>
